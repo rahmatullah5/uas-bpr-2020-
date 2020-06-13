@@ -1,5 +1,5 @@
 class ProductRequestsController < InheritedResources::Base
-
+  before_action :authenticate_employee!
   private
 
     def product_request_params
