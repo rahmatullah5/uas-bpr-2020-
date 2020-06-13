@@ -6,7 +6,7 @@ class CreateProductRequests < ActiveRecord::Migration[6.0]
       t.references :supplier, null: false, foreign_key: true
       t.float :price
       t.string :product_code
-      t.references :user, null: false, foreign_key: true
+      t.references :employee, null: false, foreign_key: true
 
       t.timestamps
     end

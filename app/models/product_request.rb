@@ -1,4 +1,4 @@
 class ProductRequest < ApplicationRecord
   belongs_to :supplier
-  belongs_to :user
+  belongs_to :employee
 end
