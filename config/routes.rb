@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   
-  root :to => "product_requests#index"
+  # root :to => "product_requests#index"
   devise_for :employees
   resources :product_requests
   
