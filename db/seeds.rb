@@ -8,3 +8,6 @@
 User.create(email: 'admin@example.com', password: 'password', password_confirmation: 'password') #if Rails.env.development?
 Employee.create(email: 'supervisor@example.com', password: 'password', password_confirmation: 'password')
 Employee.create(email: 'employee@example.com', password: 'password', password_confirmation: 'password')
+
+
+	

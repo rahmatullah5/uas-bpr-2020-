@@ -29,6 +29,10 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'activeadmin'
 gem 'devise'
 
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"
+
 group :production do 
   gem 'pg'
 end 

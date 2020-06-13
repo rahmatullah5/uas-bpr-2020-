@@ -1,37 +1,44 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Product Requests</h1>
-
-<table>
+<%- model_class = ProductRequest -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Amount</th>
-      <th>Supplier</th>
-      <th>Price</th>
-      <th>Product code</th>
-      <th>User</th>
-      <th colspan="3"></th>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:amount) %></th>
+      <th><%= model_class.human_attribute_name(:supplier_id) %></th>
+      <th><%= model_class.human_attribute_name(:price) %></th>
+      <th><%= model_class.human_attribute_name(:product_code) %></th>
+      <th><%= model_class.human_attribute_name(:employee_id) %></th>
+      <th><%= model_class.human_attribute_name(:approved) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @product_requests.each do |product_request| %>
       <tr>
+        <td><%= link_to product_request.id, product_request_path(product_request) %></td>
         <td><%= product_request.name %></td>
         <td><%= product_request.amount %></td>
-        <td><%= product_request.supplier_id %></td>
+        <td><%= product_request.try(:supplier).try(:name) %></td>
         <td><%= product_request.price %></td>
         <td><%= product_request.product_code %></td>
-        <td><%= product_request.user_id %></td>
-        <td><%= link_to 'Show', product_request %></td>
-        <td><%= link_to 'Edit', edit_product_request_path(product_request) %></td>
-        <td><%= link_to 'Destroy', product_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= product_request.employee_id %></td>
+        <td><%= product_request.approved %></td>
+        <td><%=l product_request.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_product_request_path(product_request), :class => 'btn btn-default btn-xs' %>
+
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Product Request', new_product_request_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_product_request_path,
+            :class => 'btn btn-primary' %>

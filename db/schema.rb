@@ -41,10 +41,11 @@ ActiveRecord::Schema.define(version: 2020_06_13_021721) do
   create_table "product_requests", force: :cascade do |t|
     t.string "name"
     t.integer "amount"
-    t.integer "supplier_id", null: false
+    t.integer "supplier_id"
     t.float "price"
     t.string "product_code"
     t.integer "employee_id", null: false
+    t.boolean "approved", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["employee_id"], name: "index_product_requests_on_employee_id"
